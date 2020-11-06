@@ -1,6 +1,6 @@
 //
 //  DashboardVC.swift
-//  TestProject
+//  TheMovieDB
 //
 //  Created by Thomas Woodfin on 10/29/20.
 //  Copyright © 2020 Thomas Woodfin. All rights reserved.
@@ -49,6 +49,15 @@ class DashboardVC: UIViewController {
             }
         }
     }
+    
+    private func showMovieDetailsVC(movie: Movie){
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(storyboard: .main)
+            let vc = storyboard.instantiateViewController(withIdentifier: MovieDetailsVC.self)
+            vc.movie = movie
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
 }
 
 extension DashboardVC: UITableViewDelegate, UITableViewDataSource{
@@ -67,7 +76,8 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // MARK:- Need to show Movie Details View code here
+        guard let movie = self.viewModel.popularMovieList?[indexPath.row] else {return}
+        showMovieDetailsVC(movie: movie)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -79,8 +89,6 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource{
     
     //Pagination
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-
-            print("scrollViewDidEndDragging")
             if ((tblView.contentOffset.y + tblView.frame.size.height) >= tblView.contentSize.height)
             {
                 if !isDataLoading{
@@ -115,6 +123,11 @@ extension DashboardVC: UICollectionViewDelegate, UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviePosterCell.identifire, for: indexPath) as! MoviePosterCell
         cell.configureCell(vm: viewModel, index: indexPath.row)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let movie = self.viewModel.movieList?[indexPath.row] else {return}
+        showMovieDetailsVC(movie: movie)
     }
     
     
