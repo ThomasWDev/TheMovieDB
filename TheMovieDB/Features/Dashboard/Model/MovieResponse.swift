@@ -1,6 +1,6 @@
 //
 //  MovieResponse.swift
-//  GMTest
+//  TheMovieDB
 //
 //  Created by Thomas Woodfin on 11/6/20.
 //  Copyright © 2020 Thomas Woodfin. All rights reserved.

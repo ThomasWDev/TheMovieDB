@@ -33,6 +33,8 @@
 		A90F4BE32555D0B3000A19D1 /* OAuth2Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F4BCE2555D0B3000A19D1 /* OAuth2Handler.swift */; };
 		A90F4BE42555D0B3000A19D1 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F4BCF2555D0B3000A19D1 /* EndPoint.swift */; };
 		A90F4BE62555D0E4000A19D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90F4BE52555D0E4000A19D1 /* LaunchScreen.storyboard */; };
+		A90F4BEF2555D861000A19D1 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F4BED2555D861000A19D1 /* CircularProgressView.swift */; };
+		A90F4BF02555D861000A19D1 /* HorizontalPaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F4BEE2555D861000A19D1 /* HorizontalPaginationManager.swift */; };
 		BFFB068BF33DA916897EEC62 /* Pods_TheMovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F884FAAD748B710E9BF986 /* Pods_TheMovieDBTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,8 @@
 		A90F4BCF2555D0B3000A19D1 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A90F4BE52555D0E4000A19D1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A90F4BE92555D1DD000A19D1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A90F4BED2555D861000A19D1 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		A90F4BEE2555D861000A19D1 /* HorizontalPaginationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPaginationManager.swift; sourceTree = "<group>"; };
 		BA15BFD187205E37F262A380 /* Pods-TheMovieDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDBTests.debug.xcconfig"; path = "Target Support Files/Pods-TheMovieDBTests/Pods-TheMovieDBTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB3EED707785CA1897C71C51 /* Pods-TheMovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDB.debug.xcconfig"; path = "Target Support Files/Pods-TheMovieDB/Pods-TheMovieDB.debug.xcconfig"; sourceTree = "<group>"; };
 		BBBD41CBEDFE90FC93A3BEAF /* Pods-TheMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDBTests.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDBTests/Pods-TheMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 			children = (
 				A90F4BB42555D0B2000A19D1 /* Constants.swift */,
 				A90F4BB82555D0B2000A19D1 /* Helper.swift */,
+				A90F4BED2555D861000A19D1 /* CircularProgressView.swift */,
+				A90F4BEE2555D861000A19D1 /* HorizontalPaginationManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 				A90F4BD92555D0B3000A19D1 /* DashboardVM.swift in Sources */,
 				A90F4BD42555D0B3000A19D1 /* Helper.swift in Sources */,
 				A90F4BD72555D0B3000A19D1 /* UIColor+Helper.swift in Sources */,
+				A90F4BF02555D861000A19D1 /* HorizontalPaginationManager.swift in Sources */,
 				A90F4B822555CF4B000A19D1 /* SceneDelegate.swift in Sources */,
 				A90F4BD52555D0B3000A19D1 /* Window+VisibleVC.swift in Sources */,
 				A90F4BDC2555D0B3000A19D1 /* MoviePosterCell.swift in Sources */,
@@ -553,6 +560,7 @@
 				A90F4BDD2555D0B3000A19D1 /* DashboardVC.swift in Sources */,
 				A90F4BE32555D0B3000A19D1 /* OAuth2Handler.swift in Sources */,
 				A90F4BE42555D0B3000A19D1 /* EndPoint.swift in Sources */,
+				A90F4BEF2555D861000A19D1 /* CircularProgressView.swift in Sources */,
 				A90F4BDF2555D0B3000A19D1 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

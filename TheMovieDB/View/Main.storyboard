@@ -180,27 +180,38 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KCU-Hs-URc">
-                                                            <rect key="frame" x="110" y="53.5" width="35.5" height="39"/>
+                                                            <rect key="frame" x="110" y="53.5" width="224" height="39"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0w-dt-5tb">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="35.5" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="224" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuJ-Qj-DF1">
-                                                                    <rect key="frame" x="0.0" y="22" width="35.5" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="22" width="224" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tm1-rf-WjC" customClass="CircularProgressView" customModule="GMTest" customModuleProvider="target">
+                                                            <rect key="frame" x="354" y="43" width="40" height="40"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="Ej8-Ie-rXo"/>
+                                                                <constraint firstAttribute="width" constant="40" id="aqk-Ij-uKl"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="tm1-rf-WjC" firstAttribute="leading" secondItem="KCU-Hs-URc" secondAttribute="trailing" constant="20" id="0uK-dv-Im4"/>
                                                         <constraint firstItem="WUe-qu-qyg" firstAttribute="top" secondItem="ydQ-hu-y5F" secondAttribute="top" constant="10" id="3Oz-Lv-TBe"/>
+                                                        <constraint firstItem="tm1-rf-WjC" firstAttribute="centerY" secondItem="ydQ-hu-y5F" secondAttribute="centerY" id="B7w-93-cox"/>
                                                         <constraint firstItem="WUe-qu-qyg" firstAttribute="leading" secondItem="ydQ-hu-y5F" secondAttribute="leading" constant="20" id="GIz-2d-n18"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tm1-rf-WjC" secondAttribute="trailing" constant="20" id="KYm-Y1-h2j"/>
                                                         <constraint firstItem="Ddu-ix-rPG" firstAttribute="top" secondItem="ydQ-hu-y5F" secondAttribute="top" constant="15" id="Z3O-RK-ynU"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KCU-Hs-URc" secondAttribute="bottom" constant="5" id="nnh-4Y-R6P"/>
                                                         <constraint firstItem="KCU-Hs-URc" firstAttribute="top" secondItem="Ddu-ix-rPG" secondAttribute="bottom" constant="18" id="s3x-qS-E3U"/>
@@ -218,6 +229,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="circularProgressView" destination="tm1-rf-WjC" id="tXs-o2-lZd"/>
                                             <outlet property="durationLbl" destination="nuJ-Qj-DF1" id="IGI-fq-dM1"/>
                                             <outlet property="movieImageView" destination="WUe-qu-qyg" id="M1f-vF-rVs"/>
                                             <outlet property="movieNameLbl" destination="Ddu-ix-rPG" id="eAP-nb-iLJ"/>

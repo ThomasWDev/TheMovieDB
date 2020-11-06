@@ -1,6 +1,6 @@
 //
 //  DashboardVM.swift
-//  GMTest
+//  TheMovieDB
 //
 //  Created by Thomas Woodfin Mahmud on 11/3/20.
 //  Copyright © 2020 Thomas Woodfin. All rights reserved.

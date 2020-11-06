@@ -12,26 +12,40 @@ class DashboardVC: UIViewController {
     
     @IBOutlet weak private var tblView: UITableView!
     @IBOutlet weak private var clcView: UICollectionView!
-
+    
+    private var pageCount = 10
+    private var pageNo = 1
+    private var isDataLoading = false
+    
+    private lazy var paginationManager: HorizontalPaginationManager = {
+        let manager = HorizontalPaginationManager(scrollView: self.clcView)
+        manager.delegate = self
+        return manager
+    }()
+    
+    private var isDragging: Bool {
+        return self.clcView.isDragging
+    }
+    
     private let viewModel = DashboardVM()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "MOVIEBOX"
         self.clcView.alwaysBounceHorizontal = true
+        self.setupPagination()
         getData(pageCount: 0)
     }
     
     private func getData(pageCount: Int){
         viewModel.getMoviesData(pageCount: pageCount) { (success) in
             if success{
-                self.viewModel.getPopularMoviesData(isShowLoader: false, pageCount: 1) { (success) in
+                self.viewModel.getPopularMoviesData(isShowLoader: false, pageCount: self.pageNo) { (success) in
                     if success{
                         self.tblView.reloadData()
                         self.clcView.reloadData()
                     }
                 }
-                
             }
         }
     }
@@ -55,7 +69,36 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // MARK:- Need to show Movie Details View code here
     }
-        
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isDataLoading = false
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    }
+    
+    //Pagination
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+
+            print("scrollViewDidEndDragging")
+            if ((tblView.contentOffset.y + tblView.frame.size.height) >= tblView.contentSize.height)
+            {
+                if !isDataLoading{
+                    isDataLoading = true
+                    self.pageNo = self.pageNo + 1
+                    self.viewModel.getPopularMoviesData(isShowLoader: true, pageCount: self.pageNo) { (success) in
+                        if success{
+                            self.tblView.reloadData()
+                        }
+                    }
+
+                }
+            }
+
+
+    }
+    
+    
 }
 
 extension DashboardVC: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -77,5 +120,42 @@ extension DashboardVC: UICollectionViewDelegate, UICollectionViewDataSource{
     
 }
 
+extension DashboardVC: HorizontalPaginationManagerDelegate {
+    
+    private func setupPagination() {
+        self.paginationManager.refreshViewColor = .clear
+        self.paginationManager.loaderColor = .white
+    }
+    
+    private func fetchItems() {
+        self.paginationManager.initialLoad()
+    }
+    
+    func refreshAll(completion: @escaping (Bool) -> Void) {
+        delay(2.0) {
+            
+            self.clcView.reloadData()
+            completion(true)
+        }
+    }
+    
+    func loadMore(completion: @escaping (Bool) -> Void) {
+        delay(2.0) {
+            self.getData(pageCount: self.pageCount)
+            self.clcView.reloadData()
+            self.pageCount += 10
+            completion(true)
+        }
+    }
+    
+}
+
+public func delay(_ delay: Double, closure: @escaping () -> Void) {
+    let deadline = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    DispatchQueue.main.asyncAfter(
+        deadline: deadline,
+        execute: closure
+    )
+}
 
 
